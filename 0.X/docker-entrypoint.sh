@@ -91,7 +91,9 @@ if [ "$1" = 'vault' ]; then
         fi
     fi
 
-    set -- gosu vault "$@"
+    if [ -z "$DISABLE_GOSU" ]; then
+      set -- gosu vault "$@"
+    fi
 fi
 
 exec "$@"
