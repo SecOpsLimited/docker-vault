@@ -1,4 +1,4 @@
-#!/bin/dumb-init /bin/sh
+#!/usr/bin/dumb-init /bin/sh
 set -e
 
 # Note above that we run dumb-init as PID 1 in order to reap zombie processes
@@ -91,8 +91,8 @@ if [ "$1" = 'vault' ]; then
         fi
     fi
 
-    if [ -z "$DISABLE_GOSU" ]; then
-      set -- gosu vault "$@"
+    if [ -z "$DISABLE_SU" ]; then
+      set -- su-exec vault "$@"
     fi
 fi
 
